@@ -9,10 +9,5 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
-    @Autowired
-    UserMapper userMapper;
-    @Override
-    public User login(User user) {
-        return userMapper.selectOne(new QueryWrapper<User>(user));
-    }
+
 }
