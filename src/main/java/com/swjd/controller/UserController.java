@@ -1,5 +1,6 @@
 package com.swjd.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.swjd.bean.User;
 import com.swjd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +26,16 @@ import javax.servlet.http.HttpSession;
         //做登录
         @RequestMapping("/doLogin")
         public String doLogin(Model model, User user, HttpSession session) {
-            User user1 = userService.login(user);
-            if (user1 != null) {
+            QueryWrapper queryWrapper=new QueryWrapper();
+            queryWrapper.eq("uname",user.getUname());
+            queryWrapper.eq("password",user.getPassword());
+            User u=userService.getOne(queryWrapper);
+            if (u != null) {
                 //账号密码没问题
-                if (user1.getFlag().equals("1")) {
+                if (u.getFlag().equals("1")) {
                     //登录成功把信息存入到session中，进行相应判断
                     //登录成功把用户名存到session
-                    session.setAttribute("activeName", user1.getUname());
+                    session.setAttribute("activeName", u.getUname());
                     return "success";
                 } else {
                     //账号被禁
@@ -54,15 +58,6 @@ import javax.servlet.http.HttpSession;
             return "main";
         }
 
-        //退出账户
-        @RequestMapping("/logOut")
-        public String logOut(HttpSession session, Model model) {
-            //清空session-让session过期
-            session.invalidate();
-            User user = new User();
-            model.addAttribute("user", user);
-            return "login";
-            /*return "redirect:/toLogin";*/
-        }
+
     }
 

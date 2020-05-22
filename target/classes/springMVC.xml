@@ -22,12 +22,12 @@
     <mvc:default-servlet-handler/>
 
     <!--5.配置拦截器（根据实际情况而定,可以配很多个拦截器）-->
-    <!--<mvc:interceptors>
+    <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            &lt;!&ndash;释放静态资源&ndash;&gt;
+            <!--释放静态资源-->
             <mvc:exclude-mapping path="/**/*.js"/>
-            <bean id="interceptor" class="com.swjd.interceptor.LoginInterceptor"></bean>
+            <bean id="interceptor" class="com.swjd.interceptor.Login"></bean>
         </mvc:interceptor>
-    </mvc:interceptors>-->
+    </mvc:interceptors>
 </beans>
