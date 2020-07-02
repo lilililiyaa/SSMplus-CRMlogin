@@ -24,7 +24,7 @@
       <spring.version>5.1.5.RELEASE</spring.version>
 
       <mybatis-plus>3.1.1</mybatis-plus>
-      <mysql.version>5.1.38</mysql.version>
+      <mysql.version>8.0.16</mysql.version>
       <slf4j.version>1.6.4</slf4j.version>
       <jstl.version>1.2</jstl.version>
       <servlet-api.version>3.1.0</servlet-api.version>
